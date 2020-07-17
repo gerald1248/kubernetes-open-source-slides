@@ -517,16 +517,6 @@ In a way AWS itself can be seen as "Linux as a service". RDS is a particularly e
 As we are on the subject of splitting souls, this is as close as we have come to splitting the soul of open source.
 </aside>
 
-<!--
-# TRADEMARKS AND TRADE BARRIERS {bg=#fff44d}
-
-Alibaba Cloud became a CNCF Gold Member and upgraded to Platinum in 2017.
-
-Alibaba affiliate Ant Financial, Baidu and Tencent also became Gold Members.
-
-<img src="assets/img/android.svg"/>
--->
-
 # A PORTABLE STACK {bg=#97dce7}
 
 ```render_a2sketch
