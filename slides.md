@@ -1,15 +1,16 @@
 ---
 title: Kubernetes and Open Source in the cloud
 pdf: kubernetes-open-source.pdf
-standalone: kubernetes-open-source.html
+# standalone: kubernetes-open-source.html
 slideNumber: true
 controls: false
-asciinema: true
+# asciinema: true
 backgroundTransition: fade
 transition: slide
 ---
 
 # KUBERNETES AND OPEN SOURCE IN THE CLOUD {bgcss=tw-colorful .light-on-dark}
+
 
 Gerald Schmidt
 
@@ -38,6 +39,11 @@ Gerald Schmidt
 ```
 
 The 'orchestration wars' saw a large variety of proprietary and open source offerings.
+
+<aside class="notes">
+Test note
+</aside>
+
 
 # SPLENDID ISOLATION {bg=#97dce7} 
 
@@ -135,6 +141,7 @@ When the dust settled, only one of them was left standing.
     "width": 600,
     "height": 300,
     "mark": "bar",
+    "background": "transparent",
     "encoding": {
         "x": {
             "timeUnit": "year", "field": "date", "type": "temporal"
@@ -158,7 +165,7 @@ When the dust settled, only one of them was left standing.
             "labelAngle": 0
         },
         "bar": {
-            "continuousBandSize": 20
+            "binSpacing": 20
         }
     }
 }
