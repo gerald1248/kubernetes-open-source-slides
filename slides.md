@@ -1,16 +1,13 @@
 ---
 title: Kubernetes and Open Source in the cloud
 pdf: kubernetes-open-source.pdf
-# standalone: kubernetes-open-source.html
 slideNumber: true
 controls: false
-# asciinema: true
 backgroundTransition: fade
-transition: slide
+transition: fade
 ---
 
 # KUBERNETES AND OPEN SOURCE IN THE CLOUD {bgcss=tw-colorful .light-on-dark}
-
 
 Gerald Schmidt
 
@@ -182,7 +179,7 @@ Alexa for Business, Amazon AppFlow, Amazon Augmented AI, Amazon Braket, Amazon C
 
 # THE HORCRUX PATTERN {bg=#6a2469 .light-on-dark}
 
-# VENDOR SHARDING {bg=#97dce7}
+# SHARED OWNERSHIP {bg=#97dce7}
 
 ```render_a2sketch
 .-----------------------------------------------------------.
@@ -228,7 +225,7 @@ Alexa for Business, Amazon AppFlow, Amazon Augmented AI, Amazon Braket, Amazon C
 
 ```render_a2sketch
 
-.---------------------------------------------------.
+.---------------------------------------------------#
 |[w]                                                |
 | open source                                       |
 |                                                   |
@@ -240,7 +237,7 @@ Alexa for Business, Amazon AppFlow, Amazon Augmented AI, Amazon Braket, Amazon C
 |[w]                                                |
 | extensibility                                     |
 |                                                   |
-'---------------------------------------------------'
+#---------------------------------------------------'
 
 [w]: {"a2s:delref": true, "fill": "#fff", "fillStyle": "solid"}
 [p]: {"a2s:delref": true, "fill": "#ef5ba1", "fillStyle": "solid", "strokeStyle": "#000"}
@@ -255,9 +252,9 @@ Alexa for Business, Amazon AppFlow, Amazon Augmented AI, Amazon Braket, Amazon C
 
 ```render_a2sketch
 
-.---------------------------------------------------.
+.---------------------------------------------------#
 |[p]                                                |
-| open source - MIT                                 |
+| open source - Apache                              |
 |                                                   |
 #---------------------------------------------------#
 |[w]                                                |
@@ -267,7 +264,7 @@ Alexa for Business, Amazon AppFlow, Amazon Augmented AI, Amazon Braket, Amazon C
 |[w]                                                |
 | extensibility                                     |
 |                                                   |
-'---------------------------------------------------'
+#---------------------------------------------------'
 
 [w]: {"a2s:delref": true, "fill": "#fff", "fillStyle": "solid"}
 [p]: {"a2s:delref": true, "fill": "#ef5ba1", "fillStyle": "solid", "strokeStyle": "#000"}
@@ -283,9 +280,9 @@ A suitably permissive license is a necessary but not sufficient precondition.
 
 ```render_a2sketch
 
-.---------------------------------------------------.
+.---------------------------------------------------#
 |[p]                                                |
-| open source - MIT                                 |
+| open source - Apache                              |
 |                                                   |
 #---------------------------------------------------#
 |[b]                                                |
@@ -295,7 +292,7 @@ A suitably permissive license is a necessary but not sufficient precondition.
 |[w]                                                |
 | extensibility                                     |
 |                                                   |
-'---------------------------------------------------'
+#---------------------------------------------------'
 
 #---------------------------------------------------#
 |[q]                                                |
@@ -324,9 +321,9 @@ A suitably permissive license is a necessary but not sufficient precondition.
 
 ```render_a2sketch
 
-.---------------------------------------------------.
+.---------------------------------------------------#
 |[p]                                                |
-| open source - MIT                                 |
+| open source - Apache                              |
 |                                                   |
 #---------------------------------------------------#
 |[b]                                                |
@@ -336,7 +333,7 @@ A suitably permissive license is a necessary but not sufficient precondition.
 |[d]                                                |
 | extensibility - controllers and operators         |
 |                                                   |
-'---------------------------------------------------'
+#---------------------------------------------------'
 
 [w]: {"a2s:delref": true, "fill": "#fff", "fillStyle": "solid"}
 [p]: {"a2s:delref": true, "fill": "#ef5ba1", "fillStyle": "solid", "strokeStyle": "#000"}
@@ -360,6 +357,8 @@ One of the marks of a successful open source project is a vibrant upstream. In t
 
 ```{.render_plantuml args="-Sbackgroundcolor=transparent"}
 @startuml
+skinparam BoxPadding 10
+skinparam defaultFontSize 18
 Kubernetes->OpenShift : attribute-based access control (ABAC)
 OpenShift->Kubernetes : roles and cluster-roles
 Kubernetes->OpenShift : role-based access control (RBAC)
@@ -373,6 +372,8 @@ Since Red Hat embraced Kubernetes for OpenShift 3+, there have been numerous vir
 # DEPLOYMENTS {bg=#97dce7}
 ```{.render_plantuml args="-Sbackgroundcolor=transparent"}
 @startuml
+skinparam BoxPadding 10
+skinparam defaultFontSize 18
 Kubernetes->OpenShift : Pod and ReplicaSet objects
 OpenShift->Kubernetes : DeploymentConfig objects
 Kubernetes->OpenShift : Deployment objects
@@ -383,6 +384,8 @@ Kubernetes->OpenShift : Deployment objects
 
 ```{.render_plantuml args="-Sbackgroundcolor=transparent"}
 @startuml
+skinparam BoxPadding 10
+skinparam defaultFontSize 18
 Kubernetes->OpenShift : flat network
 OpenShift->Kubernetes : multitenant plugin
 OpenShift->Kubernetes : prototype network policies
@@ -399,6 +402,7 @@ Network policies have arguably been less successful. The question is whether net
 ```{.render_plantuml args="-Sbackgroundcolor=transparent"}
 @startuml
 skinparam BoxPadding 10
+skinparam defaultFontSize 18
 Kubernetes->"Red Hat OpenShift" : beware stateful applications
 "Red Hat OpenShift"->Kubernetes : application templates (2015)
 Kubernetes->"CoreOS Tectonic" : stateful applications still hard
@@ -430,7 +434,7 @@ Kubernetes->"CoreOS Tectonic" : Custom Resource Definitions
                  |                          |  
                  |                          | 
                  |   Cluster state (etcd)   |  
-                 |   Persistent Volumes     |  
+                 |    PersistentVolumes     |  
                  |        ConfigMaps        |  
                  |          Secrets         |  
                  |                          |  
@@ -480,33 +484,27 @@ PostgreSQL operator<br/>
 # A VERY PUBLIC BREAKUP {bg=#97dce7}
 
 ```render_a2sketch
-#-------------------------#   #-------------------------#       
-|[p]                      |   |[b]                      |      
-|                         |   |                         |      
-|    Secrets Manager      |   |           RDS           |       
-|                         |   |                         |      
-|                         |   |                         |      
-#-------------------------#   #-------------------------#       
+     #-----------------------------------------------------------#
+     |[w]                                                        |
+     | #-------------------------#   #-------------------------# |      
+     | |[p]                      |   |[b]                      | |    
+     | |     Secrets Manager     |   |           RDS           | |     
+     | |                         |   |                         | |    
+     | #-------------------------#   #-------------------------# |     
+     |           #----------------------------------#            |
+     |           |[w]                               |            |
+     |           |              EKS                 |            |
+     |           |                                  |            |
+     |           #----------------------------------#            |
+     | #-------------------------#   #-------------------------# |     
+     | |[d]                      |   |[e]                      | |    
+     | |      CodeDeploy         |   |             SQS         | |      
+     | |                         |   |                         | |     
+     | #-------------------------#   #-------------------------# |     
+     |                            AWS                            |     
+     #-----------------------------#-----------------------------#     
 
-          #----------------------------------#
-          |[c]                               |
-          |                                  |
-          |                EKS               |
-          |                                  |
-          |                                  |
-          #----------------------------------#
-
-#-------------------------#   #-------------------------#       
-|[d]                      |   |[e]                      |      
-|                         |   |                         |       
-|      CodePipeline       |   |          SQS            |        
-|                         |   |                         |       
-|                         |   |                         |       
-#-------------------------#   #-------------------------#       
-
-                   Amazon Web Services
-
-[c]: {"a2s:delref": true, "fill": "#fff", "fillStyle": "solid"}
+[w]: {"a2s:delref": true, "fill": "#fff", "fillStyle": "solid"}
 [p]: {"a2s:delref": true, "fill": "#ef5ba1", "fillStyle": "solid", "strokeStyle": "#000"}
 [b]: {"a2s:delref": true, "fill": "#f99c41", "fillStyle": "solid", "strokeStyle": "#000"}
 [d]: {"a2s:delref": true, "fill": "#27bdce", "fillStyle": "solid", "strokeStyle": "#000"}
@@ -528,30 +526,96 @@ As we are on the subject of splitting souls, this is as close as we have come to
 
 ```render_a2sketch
   
-     #-----------------------------------------------------------#
+     #-----------------------------#-----------------------------#
      |[w]                                                        |
      | #-------------------------#   #-------------------------# |      
      | |[p]                      |   |[b]                      | |    
-     | |                         |   |                         | |    
      | |     Vault operator      |   |   PostgreSQL operator   | |     
      | |                         |   |                         | |    
-     | |                         |   |                         | |    
      | #-------------------------#   #-------------------------# |     
-     |                                                           |              
      |                                                           |    
-     |                        Kubernetes                         |    
-     |                                                           |     
-     |                                                           |     
      | #-------------------------#   #-------------------------# |     
      | |[d]                      |   |[e]                      | |    
-     | |                         |   |                         | |     
-     | |   Jenkins X operator    |   |     Kafka operator      | |      
-     | |       (Tekton)          |   |                         | |     
+     | |       Jenkins X         |   |     Kafka operator      | |      
      | |                         |   |                         | |     
      | #-------------------------#   #-------------------------# |     
-     |                                                           |     
+     |                Any managed Kubernetes service             |     
      #-----------------------------------------------------------#     
-           Any cloud offering a managed Kubernetes service 
+
+[w]: {"a2s:delref": true, "fill": "#fff", "fillStyle": "solid"}
+[p]: {"a2s:delref": true, "fill": "#ef5ba1", "fillStyle": "solid", "strokeStyle": "#000"}
+[b]: {"a2s:delref": true, "fill": "#f99c41", "fillStyle": "solid", "strokeStyle": "#000"}
+[d]: {"a2s:delref": true, "fill": "#27bdce", "fillStyle": "solid", "strokeStyle": "#000"}
+[e]: {"a2s:delref": true, "fill": "#00aa5b", "fillStyle": "solid", "strokeStyle": "#000"}
+
+```
+
+# INFRASTRUCTURE AS ~~CODE~~DATA  {bg=#97dce7}
+
+```render_a2sketch
+#-----------------------------------------------------------------#
+|[q]                                                              |
+|                                                                 |
+|                                                                 |
+|                                                                 |
+|  Declarative configuration is about treating infrastructure as  |
+|  data, which is more portable than code, and enables workflows  |
+|  that manipulate desired state based on policy.                 |
+|                                                                 |
+|                                - Kelsey Hightower (2019)        |
+|                                                                 |
+|                                                                 |
+|                                                                 |
+#-----------------------------------------------------------------#
+
+[q]: {"a2s:type": "quote-sw", "a2s:delref": true, "fill": "#ef5ba1", "fillStyle": "solid"}
+```
+
+<div class="tiny">Source: <a href="https://twitter.com/kelseyhightower/status/1164194470436302848">@kelseyhightower on Twitter, 21 August 2019</a>.</div>
+
+# DESIRED STATE {bg=#97dce7}
+
+```render_a2sketch
+     #-----------------------------------------------------------#                  -#         
+     |[w]                                                        |                   |   
+     | #-------------------------#   #-------------------------# |                   |   
+     | |[p]                      |   |[b]                      | |                   #----------.
+     | |     Secrets Manager     |   |           RDS           | |                   |          |
+     | |                         |   |                         | |                   |          |
+     | #-------------------------#   #-------------------------# |                  -#          |
+     |           #----------------------------------#            |              -#              |
+     |           |[w]                               |            |               |        plan, |
+     |           |              EKS                 |            | reconciliation|       apply, |
+     |           |                                  |            |     loop      |   save state |
+     |           #----------------------------------#            |              -#              |
+     | #-------------------------#   #-------------------------# |                  -#          |
+     | |[d]                      |   |[e]                      | |                   |          |
+     | |      CodeDeploy         |   |             SQS         | |                   |          |
+     | |                         |   |                         | |                   #----------'
+     | #-------------------------#   #-------------------------# |                   |   
+     |                            AWS                            |                   |   
+     #-----------------------------#-----------------------------#                  -#   
+            Infrastructure as CODE | 
+                                   |
+                                   |
+                                   |
+                                   v Infrastructure as DATA                          -#
+     #-----------------------------#-----------------------------#                    #---------.
+     |[w]                                                        |                   -#         |
+     | #-------------------------#   #-------------------------# |              -#              |
+     | |[p]                      |   |[b]                      | |               |              |
+     | |     Vault operator      |   |   PostgreSQL operator   | |               |              |
+     | |                         |   |                         | |               |              |
+     | #-------------------------#   #-------------------------# |               |        plan, |
+     |                                                           | reconciliation|       apply, |
+     | #-------------------------#   #-------------------------# |     loop      |   save state |
+     | |[d]                      |   |[e]                      | |               |              |
+     | |       Jenkins X         |   |     Kafka operator      | |               |              |
+     | |                         |   |                         | |               |              |
+     | #-------------------------#   #-------------------------# |              -#              |
+     |                Any managed Kubernetes service             |                   -#         | 
+     #-----------------------------------------------------------#                    #---------' 
+                                                                                     -#
 
 [w]: {"a2s:delref": true, "fill": "#fff", "fillStyle": "solid"}
 [p]: {"a2s:delref": true, "fill": "#ef5ba1", "fillStyle": "solid", "strokeStyle": "#000"}
@@ -560,45 +624,144 @@ As we are on the subject of splitting souls, this is as close as we have come to
 [e]: {"a2s:delref": true, "fill": "#00aa5b", "fillStyle": "solid", "strokeStyle": "#000"}
 ```
 
-# REMEMBER THESE? {bg=#fff44d}
+<aside class="notes" data-markdown>
+</aside>
 
-<div class="xkcd tiny">
-Alexa for Business, Amazon AppFlow, Amazon Augmented AI, Amazon Braket, Amazon Chime, Amazon CodeGuru, Amazon Comprehend, Amazon Connect, Amazon DocumentDB, Amazon EventBridge, Amazon Forecast, Amazon Fraud Detector, Amazon GameLift, Amazon Honeycode, Amazon Interactive Video Service, Amazon Kendra, Amazon Keyspaces, Amazon Lex, Amazon Macie, Amazon Managed Blockchain, Amazon MQ, Amazon Personalize, Amazon Polly, Amazon QLDB, Amazon Redshift, Amazon Rekognition, Amazon SageMaker, Amazon Sumerian, Amazon Textract, Amazon Transcribe, Amazon Translate, API Gateway, Application Discovery Service, AppStream 2.0, Artifact, Athena, AWS Amplify, AWS App Mesh, AWS AppConfig, AWS AppSync, AWS Auto Scaling, AWS Backup, AWS Budgets, AWS Chatbot, AWS Cloud Map, AWS Compute Optimizer, AWS Cost Explorer, AWS Data Exchange, AWS DeepComposer, AWS DeepLens, AWS DeepRacer, AWS Firewall Manager, AWS Glue, AWS IQ, AWS Lake Formation, AWS License Manager, AWS Marketplace Subscriptions, AWS Migration Hub, AWS Organizations, AWS Outposts, AWS RoboMaker, AWS Single Sign-On, AWS Snow Family, AWS Transfer Family, AWS Well-Architected Tool, Batch, Certificate Manager, Cloud9, CloudFormation, CloudFront, CloudHSM, CloudSearch, CloudTrail, CloudWatch, CodeArtifact, CodeBuild, CodeCommit, CodeDeploy, CodePipeline, CodeStar, Cognito, Config, Control Tower, Data Pipeline, Database Migration Service, DataSync, Detective, Device Farm, Direct Connect, Directory Service, DynamoDB, EC2, EC2 Image Builder, EFS, Elastic Beanstalk, Elastic Container Registry, Elastic Container Service, Elastic Kubernetes Service, Elastic Transcoder, ElastiCache, Elasticsearch Service, Elemental Appliances & Software, EMR, FreeRTOS, FSx, Global Accelerator, Ground Station, GuardDuty, IAM, Inspector, IoT 1-Click, IoT Analytics, IoT Core, IoT Device Defender, IoT Device Management, IoT Events, IoT Greengrass, IoT SiteWise, IoT Things Graph, Key Management Service, Kinesis, Kinesis Video Streams, Lambda, Launch Wizard, Lightsail, Managed Services, MediaConnect, MediaConvert, MediaLive, MediaPackage, MediaStore, MediaTailor, Mobile Hub, MSK, Neptune, OpsWorks, Personal Health Dashboard, Pinpoint, QuickSight, RDS, Resource Access Manager, Route 53, S3, S3 Glacier, Secrets Manager, Security Hub, Server Migration Service, Serverless Application Repository, Service Catalog, Simple Email Service, Simple Notification Service, Simple Queue Service, Step Functions, Storage Gateway, Support, SWF, Systems Manager, Trusted Advisor, VPC, WAF & Shield, WorkDocs, WorkLink, WorkMail, WorkSpaces, X-Ray
-</div>
+# COMPLEXITY {bg=#97dce7}
 
-Imagine using managed open source products with first-party support instead.
+```render_a2sketch
+     #-----------------------------------------------------------#                                    -#
+     |[w]                                                        |                    -#               |
+     | #-------------------------#   #-------------------------# |                     |               |
+     | |[p]                      |   |[b]                      | |                     |               |
+     | |     Secrets Manager     |   |           RDS           | |                     |               |
+     | |                         |   |                         | |                     |               |
+     | #-------------------------#   #-------------------------# |     -#              |               |
+     |           #----------------------------------#            |      |              |               |
+     |           |[w]                               |            | RBAC |  IAM         |               |
+     |           |              EKS                 |            | CNI  |  SGs & NACLs |  Terraform    |
+     |           |                                  |            | CSI  |  S3/EBS/EFS  |  (1000+ lines)|
+     |           #----------------------------------#            |      |              |               |
+     | #-------------------------#   #-------------------------# |     -#              |               |
+     | |[d]                      |   |[e]                      | |                     |               |
+     | |      CodeDeploy         |   |             SQS         | |                     |               |
+     | |                         |   |                         | |                     |               |
+     | #-------------------------#   #-------------------------# |                     |               |
+     |                            AWS                            |                    -#               |
+     #-----------------------------#-----------------------------#                                    -#
+            Infrastructure as CODE | 
+                                   |
+                                   |
+                                   |
+                                   v Infrastructure as DATA
+     #-----------------------------#-----------------------------#                    -#
+     |[w]                                                        |     -#              |
+     | #-------------------------#   #-------------------------# |      |              |
+     | |[p]                      |   |[b]                      | |      |              |
+     | |     Vault operator      |   |   PostgreSQL operator   | |      |              |
+     | |                         |   |                         | |      |              |
+     | #-------------------------#   #-------------------------# | RBAC |              |
+     |                                                           | CNI  |  Terraform   |
+     | #-------------------------#   #-------------------------# | CSI  |  (100+ lines)|
+     | |[d]                      |   |[e]                      | |      |              |
+     | |       Jenkins X         |   |     Kafka operator      | |      |              |
+     | |                         |   |                         | |      |              |
+     | #-------------------------#   #-------------------------# |      |              |
+     |                Any managed Kubernetes service             |     -#              |
+     #-----------------------------------------------------------#                    -#
 
-On AWS or any other cloud.
+[w]: {"a2s:delref": true, "fill": "#fff", "fillStyle": "solid"}
+[p]: {"a2s:delref": true, "fill": "#ef5ba1", "fillStyle": "solid", "strokeStyle": "#000"}
+[b]: {"a2s:delref": true, "fill": "#f99c41", "fillStyle": "solid", "strokeStyle": "#000"}
+[d]: {"a2s:delref": true, "fill": "#27bdce", "fillStyle": "solid", "strokeStyle": "#000"}
+[e]: {"a2s:delref": true, "fill": "#00aa5b", "fillStyle": "solid", "strokeStyle": "#000"}
+```
 
-# CALLING ALL ASPIRING CLOUD VENDORS {bg=#97dce7}
+<aside class="notes" data-markdown>
+This is the crux of the matter. So far from introducing additional complexity, the operator approach promises to reduce complexity dramatically.
+
+This is arguably far more valuable than the reduction in cloud stickiness and lock-in, which is often the main or even sole argument put forward - after all, many companies are happy to commit to a single cloud vendor for now.
+</aside>
+
+# NATIVE RESOURCES {bg=#97dce7}
 
 ```render_a2sketch
 
-IS THE OPERATOR LIFE FOR ME?                                
-                                                YES!     NOPE                 
-                                            #---------#---------#          
-                                            |[g]      |[w]      |          
-Did AWS steal a multi-year march on you?    |    ✓    |    ✗    |          
-                                            |         |         |          
-                                            #---------#---------#          
-                                            |[g]      |[w]      |          
-Are you at risk of US trade sanctions?      |    ✓    |    ?    |          
-                                            |         |         |          
-                                            #---------#---------#          
-                                            |[g]      |[w]      |          
-Are you a bazaar kind of company?           |    ✓    |    ?    |          
-                                            |         |         |          
-                                            #---------#---------#          
-                                                                             
+#---------------------------------------------------------------------#
+|[q]                                                                  |
+|                                                                     |
+|                                                                     |
+|  Can I trust custom resources to create and manage the lifecycle    |
+|  of objects native to the platform?                                 |
+|                                                                     |
+|                                                                     |
+|                                                                     |
+#---------------------------------------------------------------------#
 
-[g]: {"a2s:delref": true, "fill": "#00aa5b", "fillStyle": "solid"}
-[w]: {"a2s:delref": true, "fill": "#fff", "fillStyle": "solid"}
-[p]: {"a2s:delref": true, "fill": "#ef5ba1", "fillStyle": "solid", "strokeStyle": "#000"}
-[b]: {"a2s:delref": true, "fill": "#f99c41", "fillStyle": "solid", "strokeStyle": "#000"}
-[d]: {"a2s:delref": true, "fill": "#27bdce", "fillStyle": "solid", "strokeStyle": "#000"}
-[e]: {"a2s:delref": true, "fill": "#00aa5b", "fillStyle": "solid", "strokeStyle": "#000"}
+            #---------------------------------------------------------------------#
+            |[a]                                                                  |
+            |                                                                     |
+            |                                                                     |
+            |  Yes, this is something resources like PersistentVolumeClaim and    |
+            |  Service have done for a long time, dynamically creating storage    |
+            |  volumes and load balancers respectively.                           |
+            |                                                                     |
+            |                                                                     |
+            |                                                                     |
+            #---------------------------------------------------------------------#     
 
+
+[q]: {"a2s:type": "quote-sw", "a2s:delref": true, "fill": "#ef5ba1", "fillStyle": "solid"}
+[a]: {"a2s:type": "quote-se", "a2s:delref": true, "fill": "#6a2469", "fillStyle": "solid"}
 ```
+
+# SERVICE LEVEL {bg=#97dce7}
+
+```render_a2sketch
+
+#---------------------------------------------------------------------#
+|[q]                                                                  |
+|                                                                     |
+|                                                                     |
+|  Can the PostgreSQL operator match the availability and durability  |
+|  guarantees of RDS?                                                 |
+|                                                                     |
+|                                                                     |
+|                                                                     |
+#---------------------------------------------------------------------#     
+
+            #---------------------------------------------------------------------#
+            |[a]                                                                  |
+            |                                                                     |
+            |                                                                     |
+            |  Not today, no. It is worth considering, though, that:              |
+            |                                                                     |
+            |  * RDS and the operator use the same AWS storage primitives         |
+            |                                                                     |
+            |  * If this is an issue, the operator could easily manage RDS on AWS |
+            |                                                                     |
+            |                                                                     |
+            |                                                                     |
+            #---------------------------------------------------------------------#     
+
+
+[q]: {"a2s:type": "quote-sw", "a2s:delref": true, "fill": "#ef5ba1", "fillStyle": "solid"}
+[a]: {"a2s:type": "quote-se", "a2s:delref": true, "fill": "#6a2469", "fillStyle": "solid"}
+```
+
+# WHAT'S IN IT FOR CLOUD VENDORS? {bg=#fff44d}
+
+Remember these?
+
+<div class="xkcd" style="font-size: 0.7em">
+Alexa for Business, Amazon AppFlow, Amazon Augmented AI, Amazon Braket, Amazon Chime, Amazon CodeGuru, Amazon Comprehend, Amazon Connect, Amazon DocumentDB, Amazon EventBridge, Amazon Forecast, Amazon Fraud Detector, Amazon GameLift, Amazon Honeycode, Amazon Interactive Video Service, Amazon Kendra, Amazon Keyspaces, Amazon Lex, Amazon Macie, Amazon Managed Blockchain, Amazon MQ, Amazon Personalize, Amazon Polly, Amazon QLDB, Amazon Redshift, Amazon Rekognition, Amazon SageMaker, Amazon Sumerian, Amazon Textract, Amazon Transcribe, Amazon Translate, API Gateway, Application Discovery Service, AppStream 2.0, Artifact, Athena, AWS Amplify, AWS App Mesh, AWS AppConfig, AWS AppSync, AWS Auto Scaling, AWS Backup, AWS Budgets, AWS Chatbot, AWS Cloud Map, AWS Compute Optimizer, AWS Cost Explorer, AWS Data Exchange, AWS DeepComposer, AWS DeepLens, AWS DeepRacer, AWS Firewall Manager, AWS Glue, AWS IQ, AWS Lake Formation, AWS License Manager, AWS Marketplace Subscriptions, AWS Migration Hub, AWS Organizations, AWS Outposts, AWS RoboMaker, AWS Single Sign-On, AWS Snow Family, AWS Transfer Family, AWS Well-Architected Tool, Batch, Certificate Manager, Cloud9, CloudFormation, CloudFront, CloudHSM, CloudSearch, CloudTrail, CloudWatch, CodeArtifact, CodeBuild, CodeCommit, CodeDeploy, CodePipeline, CodeStar, Cognito, Config, Control Tower, Data Pipeline, Database Migration Service, DataSync, Detective, Device Farm, Direct Connect, Directory Service, DynamoDB, EC2, EC2 Image Builder, EFS, Elastic Beanstalk, Elastic Container Registry, Elastic Container Service, Elastic Kubernetes Service, Elastic Transcoder, ElastiCache, Elasticsearch Service, Elemental Appliances & Software, EMR, FreeRTOS, FSx, Global Accelerator, Ground Station, GuardDuty, IAM, Inspector, IoT 1-Click, IoT Analytics, IoT Core, IoT Device Defender, IoT Device Management, IoT Events, IoT Greengrass, IoT SiteWise, IoT Things Graph, Key Management Service, Kinesis, Kinesis Video Streams, Lambda, Launch Wizard, Lightsail, Managed Services, MediaConnect, MediaConvert, MediaLive, MediaPackage, MediaStore, MediaTailor, Mobile Hub, MSK, Neptune, OpsWorks, Personal Health Dashboard, Pinpoint, QuickSight, RDS, Resource Access Manager, Route 53, S3, S3 Glacier, Secrets Manager, Security Hub, Server Migration Service, Serverless Application Repository, Service Catalog, Simple Email Service, Simple Notification Service, Simple Queue Service, Step Functions, Storage Gateway, Support, SWF, Systems Manager, Trusted Advisor, VPC, WAF & Shield, WorkDocs, WorkLink, WorkMail, WorkSpaces, X-Ray
+</div>
+
+Imagine not having to compete with this wall of products, offering a catalog of managed open source products with first-party support instead.
+
+<aside class="notes" data-markdown>
+Doubling down on their managed Kubernetes offerings promises huge benefits for Amazon's competitors. The competitive edge of the full roster of proprietary services is at least blunted if there is a vibrant ecosystem of open source middleware known to run reliably on all public clouds.
+</aside>
 
 # THANK YOU {bgcss=tw-colorful .light-on-dark}
 
