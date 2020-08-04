@@ -492,7 +492,7 @@ PostgreSQL operator<br/>
 
 # SOUL-SEARCHING AT THE BAZAAR {bg=#6a2469 .light-on-dark}
 
-# SPLITTING THE SOUL OF OPEN SOURCE {bg=#97dce7}
+# A VERY PUBLIC BREAKUP {bg=#97dce7}
 
 ```render_a2sketch
      #-----------------------------------------------------------#
